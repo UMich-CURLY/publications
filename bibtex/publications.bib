@@ -1,0 +1,317 @@
+@STRING{NOTE-APPEAR = {{{Accepted, To Appear}}}}
+
+@STRING{NOTE-CONDITIONAL = {{{Conditionally Accepted}}}}
+
+@STRING{NOTE-PRESS = {{{In Press}}}}
+
+@STRING{NOTE-SUBMITTED = {{{Submitted, Under Review}}}}
+
+@ARTICLE{rhartley-2020a,
+  author = {Ross Hartley and Maani Ghaffari and Ryan M. Eustice and Jessy W. Grizzle},
+  title = {Contact-Aided Invariant Extended {Kalman} Filtering for Robot State Estimation},
+  journal = J-IJRR,
+  year = {2020},
+  volume = {39},
+  pages = {402--430},
+  number = {4},
+  abstract = {Legged robots require knowledge of pose and velocity in order to
+	maintain stability and execute walking paths. Current solutions either
+	rely on vision data, which is susceptible to environmental and lighting
+	conditions, or fusion of kinematic and contact data with measurements from
+	an inertial measurement unit (IMU). In this work, we develop a contact-aided
+	invariant extended Kalman filter (InEKF) using the theory of Lie groups
+	and invariant observer design. This filter combines contact-inertial dynamics
+	with forward kinematic corrections to estimate pose and velocity along with
+	all current contact points. We show that the error dynamics follows a log-linear
+	autonomous differential equation with several important consequences: (a) the
+	observable state variables can be rendered convergent with a domain of attraction that
+	is independent of the system’s trajectory; (b) unlike the standard EKF, neither
+	the linearized error dynamics nor the linearized observation model depend on the
+	current state estimate, which (c) leads to improved convergence properties
+	and (d) a local observability matrix that is consistent with the underlying nonlinear
+	system. Furthermore, we demonstrate how to include IMU biases, add/remove contacts,
+	and formulate both world-centric and robo-centric versions. We compare the convergence
+	of the proposed InEKF with the commonly used quaternion-based extended Kalman filter
+	(EKF) through both simulations and experiments on a Cassie-series bipedal robot.
+	Filter accuracy is analyzed using motion capture, while a LiDAR mapping experiment
+	provides a practical use case. Overall, the developed contact-aided InEKF provides
+	better performance in comparison with the quaternion-based EKF as a result of exploiting
+	symmetries present in system.},
+  url = {https://arxiv.org/pdf/1904.09251.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{rhartley-2018c,
+  author = {Ross Hartley and Maani Ghaffari Jadidi and Lu Gan and Jiunn-Kai Huang
+	and Jessy W. Grizzle and Ryan M. Eustice},
+  title = {Hybrid Contact Preintegration for Visual-Inertial-Contact State Estimation
+	within Factor Graphs},
+  booktitle = C-IROS,
+  year = {2018},
+  pages = {3783--3790},
+  address = {Madrid, Spain},
+  month = oct,
+  abstract = {The factor graph framework is a convenient modeling technique for
+	robotic state estimation where states are represented as nodes, and
+	measurements are modeled as factors. When designing a sensor fusion
+	framework for legged robots, one often has access to visual, inertial,
+	joint encoder, and contact sensors. While visual-inertial odometry
+	has been studied extensively in this framework, the addition of a
+	preintegrated contact factor for legged robots has been only recently
+	proposed. This allowed for integration of encoder and contact measurements
+	into existing factor graphs, however, new nodes had to be added to
+	the graph every time contact was made or broken. In this work, to
+	cope with the problem of switching contact frames, we propose a hybrid
+	contact preintegration theory that allows contact information to
+	be integrated through an arbitrary number of contact switches. The
+	proposed hybrid modeling approach reduces the number of required
+	variables in the nonlinear optimization problem by only requiring
+	new states to be added alongside camera or selected keyframes. This
+	method is evaluated using real experimental data collected from a
+	Cassie-series robot where the trajectory of the robot produced by
+	a motion capture system is used as a proxy for ground truth. The
+	evaluation shows that inclusion of the proposed preintegrated hybrid
+	contact factor alongside visual-inertial navigation systems improves
+	estimation accuracy as well as robustness to vision failure, while
+	its generalization makes it more accessible for legged platforms.},
+  url = {https://arxiv.org/pdf/1803.07531.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{mjadidi-2019a,
+  author = {Maani Ghaffari and William Clark and Anthony Bloch and Ryan M. Eustice and Jessey W. Grizzle},
+  title = {Continuous Direct Sparse Visual Odometry from {RGB-D} Images},
+  booktitle = C-RSS,
+  year = {2019},
+  pages = {1--9},
+  address = {FreiburgimBreisgau, Germany},
+  month = jun,
+  abstract = {This paper reports on a novel formulation and evaluation of visual 
+	odometry from RGB-D images. Assuming a static scene, the developed theoretical
+	framework generalizes the widely used direct energy formulation (photometric 
+	error minimization) technique for obtaining a rigid body transformation that 
+	aligns two overlapping RGB-D images to a continuous formulation. The continuity
+	is achieved through functional treatment of the problem and representing the 
+	process models over RGB-D images in a reproducing kernel Hilbert space; consequently,
+	the registration is not limited to the specific image resolution and the framework
+	is fully analytical with a closed-form derivation of the gradient. We solve the
+	problem by maximizing the inner product between two functions defined over RGB-D
+	images, while the continuous action of the rigid body motion Lie group is captured
+	through the integration of the flow in the corresponding Lie algebra. Energy-based
+	approaches have been extremely successful and the developed framework in this paper
+	shares many of their desired properties such as the parallel structure on both CPUs
+	and GPUs, sparsity, semi-dense tracking, avoiding explicit data association which is
+	computationally expensive, and possible extensions to the simultaneous localization
+	and mapping frameworks. The evaluations on experimental data and comparison with
+	the equivalent energy-based formulation of the problem confirm the effectiveness
+	of the proposed technique, especially, when the lack of structure and texture in
+	the environment is evident.},
+  url = {https://arxiv.org/pdf/1904.02266.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{rhartley-2018b,
+  author = {Ross Hartley and Maani Ghaffari Jadidi and Jessy W. Grizzle and Ryan
+	M. Eustice},
+  title = {Contact-Aided Invariant Extended Kalman Filtering for Legged Robot
+	State Estimation},
+  booktitle = C-RSS,
+  year = {2018},
+  pages = {1--9},
+  address = {Pittsburgh, PA, USA},
+  month = jun,
+  abstract = {This paper derives a contact-aided inertial navigation observer for
+	a 3D bipedal robot using the theory of invariant observer design.
+	Aided inertial navigation is fundamentally a nonlinear observer design
+	problem; thus, current solutions are based on approximations of the
+	system dynamics, such as an Extended Kalman Filter (EKF), which uses
+	a system's Jacobian linearization along the current best estimate
+	of its trajectory. On the basis of the theory of invariant observer
+	design by Barrau and Bonnabel, and in particular, the Invariant EKF
+	(InEKF), we show that the error dynamics of the point contact-inertial
+	system follows a log-linear autonomous differential equation; hence,
+	the observable state variables can be rendered convergent with a
+	domain of attraction that is independent of the system's trajectory.
+	Due to the log-linear form of the error dynamics, it is not necessary
+	to perform a nonlinear observability analysis to show that when using
+	an Inertial Measurement Unit (IMU) and contact sensors, the absolute
+	position of the robot and a rotation about the gravity vector (yaw)
+	are unobservable. We further augment the state of the developed InEKF
+	with IMU biases, as the online estimation of these parameters has
+	a crucial impact on system performance. We evaluate theconvergence
+	of the proposed system with the commonly used quaternion-based EKF
+	observer using a Monte-Carlo simulation. In addition, our experimental
+	evaluation using a Cassie-series bipedal robot shows that the contact-aided
+	InEKF provides better performance in comparison with the quaternion-based
+	EKF as a result of exploiting symmetries present in the system dynamics.},
+  url = {https://arxiv.org/pdf/1805.10410.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{rhartley-2018a,
+  author = {Ross Hartley and Josh Mangelson and Lu Gan and Maani Ghaffari Jadidi
+	and Jeffery M. Walls and Ryan M. Eustice and Jessy W. Grizzle},
+  title = {Legged Robot State-Estimation Through Combined Forward Kinematic
+	and Preintegrated Contact Factors},
+  booktitle = C-ICRA,
+  year = {2018},
+  pages = {4422--4429},
+  address = {Brisbane, Australia},
+  month = may,
+  abstract = {State-of-the-art robotic perception systems have achieved sufficiently
+	good performance using Inertial Measurement Units (IMUs), cameras,
+	and nonlinear optimization techniques, that they are now being deployed
+	as technologies. However, many of these methods rely significantly
+	on vision and often fail when visual tracking is lost due to lighting
+	or scarcity of features. This paper presents a state-estimation technique
+	for legged robots that takes into account the robot's kinematic model
+	as well as its contact with the environment. We introduce forward
+	kinematic factors and preintegrated contact factors into a factor
+	graph framework that can be incrementally solved in real-time. The
+	forward kinematic factor relates the robot's base pose to a contact
+	frame through noisy encoder measurements. The preintegrated contact
+	factor provides odometry measurements of this contact frame while
+	accounting for possible foot slippage. Together, the two developed
+	factors constrain the graph optimization problem allowing the robot's
+	trajectory to be estimated. The paper evaluates the method using
+	simulated and real sensory IMU and kinematic data from experiments
+	with a Cassie-series robot designed by Agility Robotics. These preliminary
+	experiments show that using the proposed method in addition to IMU
+	decreases drift and improves localization accuracy, suggesting that
+	its use can enable successful recovery from a loss of visual tracking.},
+  url = {https://arxiv.org/pdf/1712.05873.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{mjadidi-2017a,
+  author = {Maani Ghaffari Jadidi and Lu Gan and Steven A. Parkison and Jie Li
+	and Ryan M. Eustice},
+  title = {Gaussian processes semantic map representation},
+  booktitle = {RSS Workshop on Spatial-Semantic Representations in Robotics},
+  year = {2017},
+  address = {Cambridge, MA, USA},
+  month = jul,
+  abstract = {In this paper, we develop a high-dimensional map building technique
+	that incorporates raw pixelated semantic measurements into the map
+	representation. The proposed technique uses Gaussian Processes (GPs)
+	multi-class classification for map inference and is the natural extension
+	of GP occupancy maps from binary to multi-class form. The technique
+	exploits the continuous property of GPs and, as a result, the map
+	can be inferred with any resolution. In addition, the proposed GP
+	Semantic Map (GPSM) learns the structural and semantic correlation
+	from measurements rather than resorting to assumptions, and can flexibly
+	learn the spatial correlation as well as any additional non-spatial
+	correlation between map points. We extend the OctoMap to Semantic
+	OctoMap representation and compare with the GPSM mapping performance
+	using NYU Depth V2 dataset. Evaluations of the proposed technique
+	on multiple partially labeled RGBD scans and labels from noisy image
+	segmentation show that the GP semantic map can handle sparse measurements,
+	missing labels in the point cloud, as well as noise corrupted labels.},
+  url = {https://arxiv.org/pdf/1707.01532},
+  groups = {CURLY}
+}
+
+@ARTICLE{jmangelson-2020a,
+  author = {Joshua G. Mangelson and Maani Ghaffari and Ram Vasudevan and Ryan M. Eustice},
+  title = {Characterizing the Uncertainty of Jointly Distributed Poses in the {Lie} Algebra},
+  journal = IEEE_J_RO,
+  year = {2020},
+  volume = {x},
+  pages = {1--17},
+  number = {x},
+  note = {{In Press}},
+  abstract = {An accurate characterization of pose uncertainty is essential for safe
+	autonomous navigation. Early pose uncertainty characterization methods proposed
+	by Smith, Self, and Cheeseman (SCC), used coordinate-based first-order methods
+	to propagate uncertainty through non-linear functions such as pose composition
+	(head-to-tail), pose inversion, and relative pose extraction (tail-to-tail).
+	Characterizing uncertainty in the Lie Algebra of the special Euclidean group
+	results in better uncertainty estimates. However, existing approaches assume
+	that individual poses are independent. Since factors in a pose graph induce
+	correlation, this independence assumption is usually not reflected in reality.
+	In addition, prior work has focused primarily on the pose composition operation.
+	This paper develops a framework for modeling the uncertainty of jointly distributed
+	poses and describes how to perform the equivalent of the SSC pose operations while
+	characterizing uncertainty in the Lie Algebra. Evaluation on simulated and open-source
+	datasets shows that the proposed methods result in more accurate uncertainty estimates.
+	An accompanying C++ library implementation is also released.},
+  url = {https://arxiv.org/pdf/1906.07795.pdf},
+  groups = {CURLY}
+}
+
+@ARTICLE{ganlu-2020a,
+  author = {Lu Gan and Ray Zhang and Jessy W. Grizzle and Ryan M. Eustice and Maani Ghaffari},
+  title = {{Bayesian} Spatial Kernel Smoothing for Scalable Dense Semantic Mapping},
+  journal = J-RAL,
+  year = {2020},
+  volume = {5},
+  pages = {790-797},
+  number = {2},
+  abstract = {This article develops a Bayesian continuous 3D semantic occupancy map from noisy 
+	point clouds by generalizing the Bayesian kernel inference model for building occupancy 
+	maps, a binary problem, to semantic maps, a multi-class problem. The proposed method 
+	provides a unified probabilistic model for both occupancy and semantic probabilities 
+	and nicely reverts to the original occupancy mapping framework when only one occupied
+	class exists in obtained measurements. The Bayesian spatial kernel inference relaxes
+	the independent grid assumption and brings smoothness and continuity to the map inference,
+	enabling to exploit local correlations present in the environment and increasing the performance.
+	The accompanying software uses multi-threading and vectorization, and runs at about 2 Hz on
+	a laptop CPU. Evaluations using multiple sequences of stereo camera and LiDAR datasets show
+	that the proposed method consistently outperforms current baselines. We also present a
+	qualitative evaluation using data collected with a bipedal robot platform on the University
+	of Michigan - North Campus.},
+  url = {https://arxiv.org/pdf/1909.04631.pdf},
+  groups = {CURLY}
+}
+
+@ARTICLE{sparkison-2019a,
+  author = {Steven A. Parkison and Maani Ghaffari and Lu Gan and Ray Zhang and Arash K. Ushani and Ryan M. Eustice},
+  title = {Boosting Shape Registration Algorithms via Reproducing Kernel {Hilbert} Space Regularizers},
+  journal = J-RAL,
+  year = {2019},
+  volume = {4},
+  pages = {4563--4570},
+  number = {4},
+  abstract = {The essence of most shape registration algorithms is to find correspondences
+	between two point clouds and then to solve for a rigid body transformation that
+	aligns the geometry. The main drawback is that the point clouds are obtained by
+	placing the sensor at different views; consequently, the two matched points most
+	likely do not correspond to the same physical point in the real environment. In other
+	words, the point cloud is a discrete representation of the shape geometry. Alternatively,
+	a point cloud measurement can be seen as samples from geometry, and a function can be learned
+	for a continuous representation using regression techniques such as kernel methods. 
+	To boost registration algorithms, this work develops a novel class of regularizers modeled
+	in the Reproducing Kernel Hilbert Space (RKHS) that ensures correspondences are also 
+	consistent in an abstract vector space of functions such as intensity surface.
+	Furthermore, the proposed RKHS regularizer is agnostic to the choice of the registration
+	cost function which is desirable. The evaluations on experimental data confirm the 
+	effectiveness of the proposed regularizer using RGB-D and LIDAR sensors.},
+  url = {https://aushani.com/pdfs/sparkison-2019a.pdf},
+  groups = {CURLY}
+}
+
+@INPROCEEDINGS{sparkison-2018a,
+  author = {Steven A. Parkison and Lu Gan and Maani Ghaffari Jadidi and Ryan M.
+	Eustice},
+  title = {Semantic Iterative Closest Point through Expectation-Maximization},
+  booktitle = C-BMVC,
+  year = {2018},
+  pages = {1--17},
+  address = {Newcastle, UK},
+  month = sep,
+  abstract = {In this paper, we develop a novel point cloud registration algorithm
+	that directly incorporates pixelated semantic measurements into the
+	estimation of the relative transformation between two point clouds.
+	The algorithm uses an Iterative Closest Point (ICP)-like scheme and
+	performs joint semantic and geometric inference using the Expectation-Maximization
+	technique in which semantic labels and point associations between
+	two point clouds are treated as latent random variables. The minimization
+	of the expected cost on the three-dimensional special Euclidean group,
+	i.e., SE(3), yields the rigid body transformation between two point
+	clouds. The evaluation on publicly available RGBD benchmarks shows
+	that, in comparison with both the standard Generalized ICP (GICP)
+	available in the Point Cloud Library and GICP on SE(3), the registration
+	error is reduced.},
+  url = {http://141.212.194.179/publications/sparkison-2018a.pdf},
+  groups = {CURLY}
+}
