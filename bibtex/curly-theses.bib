@@ -1,13 +1,14 @@
-@phdthesis{mghaffari-phdthesis,
-  author = {Ghaffari Jadidi, Maani},
-  title = {{Gaussian} processes for information-theoretic robotic mapping and exploration},
-  school = {University of Technology Sydney},
-  year = {2017},
-  month = {May},
-  address = {Sydney, Australia},
-  url = {https://opus.lib.uts.edu.au/bitstream/10453/102700/2/02Whole.pdf}
+% Encoding: UTF-8
+
+@PhdThesis{mghaffari-phdthesis,
+  author   = {Ghaffari Jadidi, Maani},
+  school   = {University of Technology Sydney},
+  title    = {{Gaussian} processes for information-theoretic robotic mapping and exploration},
+  year     = {2017},
+  address  = {Sydney, Australia},
+  month    = {May},
+  abstract = {This thesis proposes a framework for autonomous robotic mapping, exploration, and planning that uses Gaussian Processes (GPs) to model high-dimensional dense maps and solve the problem of infinite-horizon planning with imperfect state information. Robotic exploration is traditionally implemented using occupancy grid representations and geometric targets known as frontiers. The occupancy grid representation relies on the assumption of independence between grid cells and ignores structural correlations present in the environment. We develop an incremental GP occupancy mapping technique that is computationally tractable for online map building and represents a continuous model of uncertainty over the map spatial coordinates. The standard way to represent geometric frontiers extracted from occupancy maps is to assign binary values to each grid cell. We extend this notion to novel probabilistic frontier maps computed efficiently using the gradient of the GP occupancy map and propose a mutual information-based greedy exploration technique built on that representation. A primary motivation is the fact that high-dimensional map inference requires fewer observations, leading to a faster map entropy reduction during exploration for map building scenarios. The uncertainty from pose estimation is often ignored during current mapping strategies as the dense belief representation of occupancy maps makes the uncertainty propagation impractical. Additionally, when kernel methods are applied, such maps tend to model structural shapes of the environment with excessive smoothness. We show how the incremental GP occupancy mapping technique can be extended to accept uncertain robot poses and mitigate the excessive smoothness problem using Warped Gaussian Processes. This approach can model non-Gaussian noise in the observation space and capture the possible non-linearity in that space better than standard GPs. Finally, we develop a sampling-based information gathering planner, with an information-theoretic convergence, which allows dense belief representations. The planner takes the present uncertainty in state estimation into account and provides a general framework for robotic exploration in a priori unknown environments with an information-theoretic stopping criterion. The developed framework relaxes the need for any state or action space discretization and is a fully information-driven integrated navigation technique. The developed framework can be applied to a large number of scenarios where the robot is tasked to perform exploration and information gathering simultaneously. The developed algorithms in this thesis are implemented and evaluated using simulated and experimental datasets and are publicly available as open source libraries.},
+  url      = {https://opus.lib.uts.edu.au/bitstream/10453/102700/2/02Whole.pdf},
 }
 
-
-
-
+@Comment{jabref-meta: databaseType:bibtex;}
