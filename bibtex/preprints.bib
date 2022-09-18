@@ -1,5 +1,3 @@
-% Encoding: UTF-8
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @STRING{C-AAAI = {Proceedings of the {AAAI} National Conference on Artificial Intelligence}}
 @STRING{C-ACC = {Proceedings of the American Control Conference}}
@@ -436,28 +434,20 @@
 @STRING{NOTE-CONDITIONAL = {{{Conditionally Accepted}}}}
 @STRING{NOTE-PRESS = {{{In Press}}}}
 @STRING{NOTE-SUBMITTED = {{{Submitted, Under Review}}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % preprints
-@Article{Gan2017,
-  author  = {Gan, Lu and Ghaffari Jadidi, Maani and Parkison, Steven A. and Eustice, Ryan M.},
-  title   = {Sparse Bayesian Inference for Dense Semantic Mapping},
-  journal = {arXiv preprint arXiv:1709.07973},
-  year    = {2017},
+@Article{Gan2017Article,
+  author   = {Gan, Lu and Ghaffari Jadidi, Maani and Parkison, Steven A. and Eustice, Ryan M.},
+  journal  = {arXiv preprint arXiv:1709.07973},
+  title    = {Sparse Bayesian Inference for Dense Semantic Mapping},
+  year     = {2017},
   abstract = {Despite impressive advances in simultaneous localization and mapping, dense robotic mapping remains challenging due to its inherent nature of being a high-dimensional inference problem. In this paper, we propose a dense semantic robotic mapping technique that exploits sparse Bayesian models, in particular, the relevance vector machine, for high-dimensional sequential inference. The technique is based on the principle of automatic relevance determination and produces sparse models that use a small subset of the original dense training set as the dominant basis. The resulting map posterior is continuous, and queries can be made efficiently at any resolution. Moreover, the technique has probabilistic outputs per semantic class through Bayesian inference. We evaluate the proposed relevance vector semantic map using publicly available benchmark datasets, NYU Depth V2 and KITTI; and the results show promising improvements over the state-of-the-art techniques.},
-  url     = {https://arxiv.org/pdf/1709.07973},
+  url      = {https://arxiv.org/pdf/1709.07973},
 }
 
-@Article{Clark2020,
-  author   = {Clark, William and Ghaffari, Maani and Bloch, Anthony},
-  journal  = {arXiv preprint arXiv:2001.04286},
-  title    = {Nonparametric Continuous Sensor Registration},
-  year     = {2020},
-  abstract = {This paper develops a new mathematical framework that enables nonparametric joint semantic/appearance and geometric representation of continuous functions using data. The joint semantic and geometric embedding is modeled by representing the processes in a reproducing kernel Hilbert space. The framework allows the functions to be defined on arbitrary smooth manifolds where the action of a Lie group is used to align them. The continuous functions allow the registration to be independent of a specific signal resolution and the framework is fully analytical with a closed-form derivation of the Riemannian gradient and Hessian. We study a more specialized but widely used case where the Lie group acts on functions isometrically. We solve the problem by maximizing the inner product between two functions defined over data, while the continuous action of the rigid body motion Lie group is captured through the integration of the flow in the corresponding Lie algebra. Low-dimensional cases are derived with numerical examples to show the generality of the proposed framework. The high-dimensional derivation for the special Euclidean group acting on the Euclidean space showcases the point cloud registration and bird's-eye view map registration abilities. A specific derivation and implementation of this framework for RGB-D cameras outperform the state-of-the-art robust visual odometry and performs well in texture and structure-scares environments.},
-  url      = {https://arxiv.org/pdf/2001.04286.pdf},
-}
-
-@Article{Lin2019,
+@Article{Lin2019Article,
   author   = {Lin, Xi and Sun, Dingyi and Lin, Tzu-Yuan and Eustice, Ryan M. and Ghaffari, Maani},
   journal  = {arXiv preprint arXiv:1912.01064},
   title    = {A Keyframe-based Continuous Visual SLAM for RGB-D Cameras via Nonparametric Joint Geometric and Appearance Representation},
@@ -466,7 +456,7 @@
   url      = {https://arxiv.org/pdf/1912.01064.pdf},
 }
 
-@Article{Lin2019a,
+@Article{Lin2019Articlea,
   author   = {Lin, Tzu-Yuan and Clark, William and Eustice, Ryan M and Grizzle, Jessy W and Bloch, Anthony and Ghaffari, Maani},
   journal  = {arXiv preprint arXiv:1910.00713},
   title    = {Adaptive Continuous Visual Odometry from RGB-D Images},
@@ -475,22 +465,67 @@
   url      = {https://arxiv.org/pdf/1910.00713.pdf},
 }
 
-@Article{Zhu2020,
-  author   = {Zhu, Minghan and Ghaffari, Maani and Zhong, Yuanxin and Lu, Pingping and Cao, Zhong and Eustice, Ryan M. and Peng, Huei},
-  journal  = {arXiv preprint arXiv:2003.09763},
-  title    = {Monocular Depth Prediction Through Continuous {3D} Loss},
-  year     = {2020},
-  abstract = {This paper reports a new continuous 3D loss function for learning depth from monocular images. The dense depth prediction from a monocular image is supervised using sparse LIDAR points, exploiting available data from camera-LIDAR sensor suites during training. Currently, accurate and affordable range sensor is not available. Stereo cameras and LIDARs measure depth either inaccurately or sparsely/costly. In contrast to the current point-to-point loss evaluation approach, the proposed 3D loss treats point clouds as continuous objects; and therefore, it overcomes the lack of dense ground truth depth due to the sparsity of LIDAR measurements. Experimental evaluations show that the proposed method achieves accurate depth measurement with consistent 3D geometric structures through a monocular camera.},
-  url      = {https://arxiv.org/pdf/2003.09763.pdf},
+@Article{Teng2021Article,
+  author        = {Sangli Teng and Yukai Gong and Jessy W. Grizzle and Maani Ghaffari},
+  journal       = {arXiv preprint arXiv:2103.14252},
+  title         = {Toward Safety-Aware Informative Motion Planning for Legged Robots},
+  year          = {2021},
+  month         = mar,
+  abstract      = {This paper reports on developing an integrated framework for safety-aware informative motion planning suitable for legged robots. The information-gathering planner takes a dense stochastic map of the environment into account, while safety constraints are enforced via Control Barrier Functions (CBFs). The planner is based on the Incrementally-exploring Information Gathering (IIG) algorithm and allows closed-loop kinodynamic node expansion using a Model Predictive Control (MPC) formalism. Robotic exploration and information gathering problems are inherently path-dependent problems. That is, the information collected along a path depends on the state and observation history. As such, motion planning solely based on a modular cost does not lead to suitable plans for exploration. We propose SAFE-IIG, an integrated informative motion planning algorithm that takes into account: 1) a robot's perceptual field of view via a submodular information function computed over a stochastic map of the environment, 2) a robot's dynamics and safety constraints via discrete-time CBFs and MPC for closed-loop multi-horizon node expansions, and 3) an automatic stopping criterion via setting an information-theoretic planning horizon. The simulation results show that SAFE-IIG can plan a safe and dynamically feasible path while exploring a dense map.},
+  archiveprefix = {arXiv},
+  eprint        = {2103.14252},
+  file          = {:- Toward Safety Aware Informative Motion Planning for Legged Robots.pdf:PDF},
+  keywords      = {cs.RO},
+  primaryclass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2103.14252},
 }
 
-@Article{Huang2019,
-  author   = {Huang, Jiunn-Kai and Ghaffari, Maani and Hartley, Ross and Gan, Lu and Eustice, Ryan M. and Grizzle, Jessy W.},
-  journal  = {arXiv preprint arXiv:1908.10349},
-  title    = {LiDARTag: A Real-Time Fiducial Tag using Point Clouds},
-  year     = {2019},
-  abstract = {Image-based fiducial markers are widely used in robotics and computer vision problems such as object tracking in cluttered or textureless environments, camera (and multi-sensor) calibration tasks, or vision-based simultaneous localization and mapping (SLAM). The state-of-the-art fiducial marker detection algorithms rely on consistency of the ambient lighting. This paper introduces LiDARTag, a novel fiducial tag design and detection algorithm suitable for light detection and ranging (LiDAR) point clouds. The proposed tag runs in real-time and can process data faster than the currently available LiDAR sensors frequencies. Due to the nature of the LiDAR's sensor, rapidly changing ambient lighting will not affect detection of a LiDARTag; hence, the proposed fiducial marker can operate in a completely dark environment. In addition, the LiDARTag nicely complements available visual fiducial markers as the tag design is compatible with available techniques, such as AprilTags, allowing for efficient multi-sensor fusion and calibration tasks. The experimental results, verified by a motion capture system, confirm the proposed technique can reliably provide a tag's pose and its unique ID code.},
-  url      = {https://arxiv.org/pdf/1908.10349.pdf},
+@Article{Clark2020Article,
+  author        = {William Clark and Maani Ghaffari},
+  journal       = {arXiv preprint arXiv:2010.13813},
+  title         = {A Path-Dependent Variational Framework for Incremental Information Gathering},
+  year          = {2020},
+  month         = oct,
+  abstract      = {Information gathered along a path is inherently submodular; the incremental amount of information gained along a path decreases due to redundant observations. In addition to submodularity, the incremental amount of information gained is a function of not only the current state but also the entire history as well. This paper presents the construction of the first-order necessary optimality conditions for memory (history-dependent) Lagrangians. Path-dependent problems frequently appear in robotics and artificial intelligence, where the state such as a map is partially observable, and information can only be obtained along a trajectory by local sensing. Robotic exploration and environmental monitoring has numerous real-world applications and can be formulated using the proposed approach.},
+  archiveprefix = {arXiv},
+  eprint        = {2010.13813},
+  file          = {:- A Path Dependent Variational Framework for Incremental Information Gathering.pdf:PDF},
+  keywords      = {cs.RO, math.OC, 46E15, 46G05, 34K05, 49K21},
+  primaryclass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2010.13813},
+}
+
+@Article{Zhu2022Article,
+  author  = {Zhu, Minghan and Ghaffari, Maani and Clark, William A and Peng, Huei},
+  journal = {arXiv preprint arXiv:2206.05398},
+  title   = {E$^2$PN: Efficient {SE(3)}-Equivariant Point Network},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2206.05398},
+}
+
+@Article{Song2022Article,
+  author  = {Song, Jingwei and Zhu, Qiuchen and Lin, Jianyu and Ghaffari, Maani},
+  journal = {arXiv preprint arXiv:2205.03133},
+  title   = {BDIS: Bayesian Dense Inverse Searching Method for Real-Time Stereo Surgical Image Matching},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2205.03133},
+}
+
+@Article{Fu2021Article,
+  author  = {Fu, Bo and Smith, William and Rizzo, Denise and Castanier, Matthew and Ghaffari, Maani and Barton, Kira},
+  journal = {arXiv preprint arXiv:2106.12111},
+  title   = {Robust task scheduling for heterogeneous robot teams under capability uncertainty},
+  year    = {2021},
+  url     = {https://arxiv.org/abs/2106.12111},
+}
+
+@Article{Huang2020Article,
+  author   = {Huang, Jiunn-Kai and Feng, Chenxi and Achar, Madhav and Ghaffari, Maani and Grizzle, Jessy W},
+  journal  = {arXiv preprint arXiv:2012.03321},
+  title    = {Global unifying intrinsic calibration for spinning and solid-state LiDARs},
+  year     = {2020},
+  abstract = {Sensor calibration, which can be intrinsic or extrinsic, is an essential step to achieve the measurement accuracy required for modern perception and navigation systems deployed on autonomous robots. To date, intrinsic calibration models for spinning LiDARs have been based on hypothesized based on their physical mechanisms, resulting in anywhere from three to ten parameters to be estimated from data, while no phenomenological models have yet been proposed for solid-state LiDARs. Instead of going down that road, we propose to abstract away from the physics of a LiDAR type (spinning vs solid-state, for example), and focus on the spatial geometry of the point cloud generated by the sensor. By modeling the calibration parameters as an element of a special matrix Lie Group, we achieve a unifying view of calibration for different types of LiDARs. We further prove mathematically that the proposed model is well-constrained (has a unique answer) given four appropriately orientated targets. The proof provides a guideline for target positioning in the form of a tetrahedron. Moreover, an existing Semidefinite programming global solver for SE(3) can be modified to compute efficiently the optimal calibration parameters. For solid state LiDARs, we illustrate how the method works in simulation. For spinning LiDARs, we show with experimental data that the proposed matrix Lie Group model performs equally well as physics-based models in terms of reducing the P2P distance, while being more robust to noise.},
+  url      = {https://arxiv.org/abs/2012.03321},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

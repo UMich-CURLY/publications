@@ -8,7 +8,7 @@
 // QuickSearch script for JabRef HTML export 
 // Version: 3.0
 //
-// Copyright (c) 2006-2013, Mark Schenk
+// Copyright (c) 2006-2011, Mark Schenk
 //
 // This software is distributed under a Creative Commons Attribution 3.0 License
 // http://creativecommons.org/licenses/by/3.0/
@@ -20,11 +20,11 @@
 //
 // - search with/without Regular Expressions
 // - match BibTeX key
-// - put BibTeX type in a data-attribute
+//
 
 // Search settings
 var searchAbstract = true;	// search in abstract
-var searchReview = true;	// search in review
+var searchComment = true;	// search in comment
 
 var noSquiggles = true; 	// ignore diacritics when searching
 var searchRegExp = false; 	// enable RegExp searches
@@ -65,29 +65,27 @@ function loadTableData() {
 	searchTable = document.getElementById('qs_table');
 	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
-	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	// split all rows into entryRows and infoRows (e.g. abstract, comment, bibtex)
 	entryRows = new Array(); infoRows = new Array(); absRows = new Array(); revRows = new Array();
 
 	// get data from each row
 	entryRowsData = new Array(); absRowsData = new Array(); revRowsData = new Array(); 
 	
 	BibTeXKeys = new Array();
-	RefTypeKeys = new Array();
-
+	
 	for (var i=0, k=0, j=0; i<allRows.length;i++) {
 		if (allRows[i].className.match(/entry/)) {
 			entryRows[j] = allRows[i];
 			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
 			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
-			RefTypeKeys[j] = allRows[i].getAttribute('data-reftype');
 			j ++;
 		} else {
 			infoRows[k++] = allRows[i];
-			// check for abstract/review
+			// check for abstract/comment
 			if (allRows[i].className.match(/abstract/)) {
 				absRows.push(allRows[i]);
 				absRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
-			} else if (allRows[i].className.match(/review/)) {
+			} else if (allRows[i].className.match(/comment/)) {
 				revRows.push(allRows[i]);
 				revRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
 			}
@@ -137,13 +135,13 @@ function quickSearch(){
 		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
 			var found = false; 
 
-			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1 || RefTypeKeys[i].search(textRegExp) != -1){ 
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
 				found = true;
 			} else {
 				if(searchAbstract && absRowsData[i]!=undefined) {
 					if (absRowsData[i].search(textRegExp) != -1){ found=true; } 
 				}
-				if(searchReview && revRowsData[i]!=undefined) {
+				if(searchComment && revRowsData[i]!=undefined) {
 					if (revRowsData[i].search(textRegExp) != -1){ found=true; } 
 				}
 			}
@@ -219,8 +217,8 @@ function toggleInfo(articleid,info) {
 	
 	if (abs && info == 'abstract') {
 		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract show';
-	} else if (rev && info == 'review') {
-		rev.className.indexOf('noshow') == -1?rev.className = 'review noshow':rev.className = 'review show';
+	} else if (rev && info == 'comment') {
+		rev.className.indexOf('noshow') == -1?rev.className = 'comment noshow':rev.className = 'comment show';
 	} else if (bib && info == 'bibtex') {
 		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex show';
 	} else { 
@@ -242,12 +240,12 @@ function toggleInfo(articleid,info) {
 		}
 	}
 	
-	// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+	// When there's a combination of abstract/comment/bibtex showing, need to add class for correct styling
 	if(absshow) {
 		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
 	} 
 	if (revshow) {
-		bibshow?rev.className = 'review nextshow': rev.className = 'review';
+		bibshow?rev.className = 'comment nextshow': rev.className = 'comment';
 	}	
 	
 }
@@ -306,8 +304,8 @@ function updateSetting(obj){
 	   searchAbstract=!searchAbstract;
 	   redoQS();
 	   break;
-	 case "opt_searchRev":
-	   searchReview=!searchReview;
+	 case "opt_searchComment":
+	   searchComment=!searchComment;
 	   redoQS();
 	   break;
 	 case "opt_useRegExp":
@@ -324,12 +322,12 @@ function updateSetting(obj){
 
 function initPreferences(){
 	if(searchAbstract){document.getElementById("opt_searchAbs").checked = true;}
-	if(searchReview){document.getElementById("opt_searchRev").checked = true;}
+	if(searchComment){document.getElementById("opt_searchComment").checked = true;}
 	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
 	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
 	
 	if(numAbs==0) {document.getElementById("opt_searchAbs").parentNode.style.display = 'none';}
-	if(numRev==0) {document.getElementById("opt_searchRev").parentNode.style.display = 'none';}	
+	if(numRev==0) {document.getElementById("opt_searchComment").parentNode.style.display = 'none';}	
 }
 
 function toggleSettings(){
@@ -377,7 +375,7 @@ td a:hover  { text-decoration: underline; }
 
 tr.noshow { display: none;}
 tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
-tr.abstract td, tr.review td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.abstract td, tr.comment td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
 tr.nextshow td { border-bottom-style: none; }
 
 tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
@@ -398,7 +396,7 @@ p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
 <div id="settings" class="hidden">
 <ul>
 <li><input type="checkbox" class="search_setting" id="opt_searchAbs" onchange="updateSetting(this)"><label for="opt_searchAbs"> include abstract</label></li>
-<li><input type="checkbox" class="search_setting" id="opt_searchRev" onchange="updateSetting(this)"><label for="opt_searchRev"> include review</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_searchComment" onchange="updateSetting(this)"><label for="opt_searchComment"> include comment</label></li>
 <li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
 <li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
 </ul>
@@ -406,78 +404,129 @@ p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
 </form>
 <table id="qs_table" border="1">
 <tbody>
-<tr id="Zhu2020" data-reftype="Article" class="entry">
-	<td>Zhu M, Ghaffari M, Zhong Y, Lu P, Cao Z, Eustice RM and Peng H (2020), <i>"Monocular Depth Prediction Through Continuous 3D Loss"</i>, arXiv preprint arXiv:2003.09763. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Zhu2020','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Zhu2020','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/2003.09763.pdf" target="_blank">URL</a>]</p>
+<tr id="Song2022Article" class="entry">
+	<td>Song J, Zhu Q, Lin J and Ghaffari M (2022), <i>"BDIS: Bayesian Dense Inverse Searching Method for Real-Time Stereo Surgical Image Matching"</i>, arXiv preprint arXiv:2205.03133. 
+	<p class="infolinks"> [<a href="javascript:toggleInfo('Song2022Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2205.03133" target="_blank">URL</a>]</p>
 	</td>
 </tr>
-<tr id="abs_Zhu2020" class="abstract noshow">
-	<td><b>Abstract</b>: This paper reports a new continuous 3D loss function for learning depth from monocular images. The dense depth prediction from a monocular image is supervised using sparse LIDAR points, exploiting available data from camera-LIDAR sensor suites during training. Currently, accurate and affordable range sensor is not available. Stereo cameras and LIDARs measure depth either inaccurately or sparsely/costly. In contrast to the current point-to-point loss evaluation approach, the proposed 3D loss treats point clouds as continuous objects; and therefore, it overcomes the lack of dense ground truth depth due to the sparsity of LIDAR measurements. Experimental evaluations show that the proposed method achieves accurate depth measurement with consistent 3D geometric structures through a monocular camera.</td>
-</tr>
-<tr id="bib_Zhu2020" class="bibtex noshow">
+<tr id="bib_Song2022Article" class="bibtex noshow">
 <td><b>BibTeX</b>:
 <pre>
-@article{Zhu2020,
-  author = {Zhu, Minghan and Ghaffari, Maani and Zhong, Yuanxin and Lu, Pingping and Cao, Zhong and Eustice, Ryan M. and Peng, Huei},
-  title = {Monocular Depth Prediction Through Continuous 3D Loss},
-  journal = {arXiv preprint arXiv:2003.09763},
+@article{Song2022Article,
+  author = {Song, Jingwei and Zhu, Qiuchen and Lin, Jianyu and Ghaffari, Maani},
+  title = {BDIS: Bayesian Dense Inverse Searching Method for Real-Time Stereo Surgical Image Matching},
+  journal = {arXiv preprint arXiv:2205.03133},
+  year = {2022},
+  url = {https://arxiv.org/abs/2205.03133}
+}
+</pre></td>
+</tr>
+<tr id="Zhu2022Article" class="entry">
+	<td>Zhu M, Ghaffari M, Clark WA and Peng H (2022), <i>"E^2PN: Efficient SE(3)-Equivariant Point Network"</i>, arXiv preprint arXiv:2206.05398. 
+	<p class="infolinks"> [<a href="javascript:toggleInfo('Zhu2022Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2206.05398" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="bib_Zhu2022Article" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{Zhu2022Article,
+  author = {Zhu, Minghan and Ghaffari, Maani and Clark, William A and Peng, Huei},
+  title = {E^2PN: Efficient SE(3)-Equivariant Point Network},
+  journal = {arXiv preprint arXiv:2206.05398},
+  year = {2022},
+  url = {https://arxiv.org/abs/2206.05398}
+}
+</pre></td>
+</tr>
+<tr id="Fu2021Article" class="entry">
+	<td>Fu B, Smith W, Rizzo D, Castanier M, Ghaffari M and Barton K (2021), <i>"Robust task scheduling for heterogeneous robot teams under capability uncertainty"</i>, arXiv preprint arXiv:2106.12111. 
+	<p class="infolinks"> [<a href="javascript:toggleInfo('Fu2021Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2106.12111" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="bib_Fu2021Article" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{Fu2021Article,
+  author = {Fu, Bo and Smith, William and Rizzo, Denise and Castanier, Matthew and Ghaffari, Maani and Barton, Kira},
+  title = {Robust task scheduling for heterogeneous robot teams under capability uncertainty},
+  journal = {arXiv preprint arXiv:2106.12111},
+  year = {2021},
+  url = {https://arxiv.org/abs/2106.12111}
+}
+</pre></td>
+</tr>
+<tr id="Teng2021Article" class="entry">
+	<td>Teng S, Gong Y, Grizzle JW and Ghaffari M (2021), <i>"Toward Safety-Aware Informative Motion Planning for Legged Robots"</i>, arXiv preprint arXiv:2103.14252., March, 2021. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Teng2021Article','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Teng2021Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2103.14252" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Teng2021Article" class="abstract noshow">
+	<td><b>Abstract</b>: This paper reports on developing an integrated framework for safety-aware informative motion planning suitable for legged robots. The information-gathering planner takes a dense stochastic map of the environment into account, while safety constraints are enforced via Control Barrier Functions (CBFs). The planner is based on the Incrementally-exploring Information Gathering (IIG) algorithm and allows closed-loop kinodynamic node expansion using a Model Predictive Control (MPC) formalism. Robotic exploration and information gathering problems are inherently path-dependent problems. That is, the information collected along a path depends on the state and observation history. As such, motion planning solely based on a modular cost does not lead to suitable plans for exploration. We propose SAFE-IIG, an integrated informative motion planning algorithm that takes into account: 1) a robot's perceptual field of view via a submodular information function computed over a stochastic map of the environment, 2) a robot's dynamics and safety constraints via discrete-time CBFs and MPC for closed-loop multi-horizon node expansions, and 3) an automatic stopping criterion via setting an information-theoretic planning horizon. The simulation results show that SAFE-IIG can plan a safe and dynamically feasible path while exploring a dense map.</td>
+</tr>
+<tr id="bib_Teng2021Article" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{Teng2021Article,
+  author = {Sangli Teng and Yukai Gong and Jessy W. Grizzle and Maani Ghaffari},
+  title = {Toward Safety-Aware Informative Motion Planning for Legged Robots},
+  journal = {arXiv preprint arXiv:2103.14252},
+  year = {2021},
+  url = {https://arxiv.org/abs/2103.14252}
+}
+</pre></td>
+</tr>
+<tr id="Clark2020Article" class="entry">
+	<td>Clark W and Ghaffari M (2020), <i>"A Path-Dependent Variational Framework for Incremental Information Gathering"</i>, arXiv preprint arXiv:2010.13813., October, 2020. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Clark2020Article','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Clark2020Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2010.13813" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Clark2020Article" class="abstract noshow">
+	<td><b>Abstract</b>: Information gathered along a path is inherently submodular; the incremental amount of information gained along a path decreases due to redundant observations. In addition to submodularity, the incremental amount of information gained is a function of not only the current state but also the entire history as well. This paper presents the construction of the first-order necessary optimality conditions for memory (history-dependent) Lagrangians. Path-dependent problems frequently appear in robotics and artificial intelligence, where the state such as a map is partially observable, and information can only be obtained along a trajectory by local sensing. Robotic exploration and environmental monitoring has numerous real-world applications and can be formulated using the proposed approach.</td>
+</tr>
+<tr id="bib_Clark2020Article" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{Clark2020Article,
+  author = {William Clark and Maani Ghaffari},
+  title = {A Path-Dependent Variational Framework for Incremental Information Gathering},
+  journal = {arXiv preprint arXiv:2010.13813},
   year = {2020},
-  url = {https://arxiv.org/pdf/2003.09763.pdf}
+  url = {https://arxiv.org/abs/2010.13813}
 }
 </pre></td>
 </tr>
-<tr id="Clark2020" data-reftype="Article" class="entry">
-	<td>Clark W, Ghaffari M and Bloch A (2020), <i>"Nonparametric Continuous Sensor Registration"</i>, arXiv preprint arXiv:2001.04286. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Clark2020','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Clark2020','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/2001.04286.pdf" target="_blank">URL</a>]</p>
+<tr id="Huang2020Article" class="entry">
+	<td>Huang J-K, Feng C, Achar M, Ghaffari M and Grizzle JW (2020), <i>"Global unifying intrinsic calibration for spinning and solid-state LiDARs"</i>, arXiv preprint arXiv:2012.03321. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Huang2020Article','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Huang2020Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/abs/2012.03321" target="_blank">URL</a>]</p>
 	</td>
 </tr>
-<tr id="abs_Clark2020" class="abstract noshow">
-	<td><b>Abstract</b>: This paper develops a new mathematical framework that enables nonparametric joint semantic/appearance and geometric representation of continuous functions using data. The joint semantic and geometric embedding is modeled by representing the processes in a reproducing kernel Hilbert space. The framework allows the functions to be defined on arbitrary smooth manifolds where the action of a Lie group is used to align them. The continuous functions allow the registration to be independent of a specific signal resolution and the framework is fully analytical with a closed-form derivation of the Riemannian gradient and Hessian. We study a more specialized but widely used case where the Lie group acts on functions isometrically. We solve the problem by maximizing the inner product between two functions defined over data, while the continuous action of the rigid body motion Lie group is captured through the integration of the flow in the corresponding Lie algebra. Low-dimensional cases are derived with numerical examples to show the generality of the proposed framework. The high-dimensional derivation for the special Euclidean group acting on the Euclidean space showcases the point cloud registration and bird's-eye view map registration abilities. A specific derivation and implementation of this framework for RGB-D cameras outperform the state-of-the-art robust visual odometry and performs well in texture and structure-scares environments.</td>
+<tr id="abs_Huang2020Article" class="abstract noshow">
+	<td><b>Abstract</b>: Sensor calibration, which can be intrinsic or extrinsic, is an essential step to achieve the measurement accuracy required for modern perception and navigation systems deployed on autonomous robots. To date, intrinsic calibration models for spinning LiDARs have been based on hypothesized based on their physical mechanisms, resulting in anywhere from three to ten parameters to be estimated from data, while no phenomenological models have yet been proposed for solid-state LiDARs. Instead of going down that road, we propose to abstract away from the physics of a LiDAR type (spinning vs solid-state, for example), and focus on the spatial geometry of the point cloud generated by the sensor. By modeling the calibration parameters as an element of a special matrix Lie Group, we achieve a unifying view of calibration for different types of LiDARs. We further prove mathematically that the proposed model is well-constrained (has a unique answer) given four appropriately orientated targets. The proof provides a guideline for target positioning in the form of a tetrahedron. Moreover, an existing Semidefinite programming global solver for SE(3) can be modified to compute efficiently the optimal calibration parameters. For solid state LiDARs, we illustrate how the method works in simulation. For spinning LiDARs, we show with experimental data that the proposed matrix Lie Group model performs equally well as physics-based models in terms of reducing the P2P distance, while being more robust to noise.</td>
 </tr>
-<tr id="bib_Clark2020" class="bibtex noshow">
+<tr id="bib_Huang2020Article" class="bibtex noshow">
 <td><b>BibTeX</b>:
 <pre>
-@article{Clark2020,
-  author = {Clark, William and Ghaffari, Maani and Bloch, Anthony},
-  title = {Nonparametric Continuous Sensor Registration},
-  journal = {arXiv preprint arXiv:2001.04286},
+@article{Huang2020Article,
+  author = {Huang, Jiunn-Kai and Feng, Chenxi and Achar, Madhav and Ghaffari, Maani and Grizzle, Jessy W},
+  title = {Global unifying intrinsic calibration for spinning and solid-state LiDARs},
+  journal = {arXiv preprint arXiv:2012.03321},
   year = {2020},
-  url = {https://arxiv.org/pdf/2001.04286.pdf}
+  url = {https://arxiv.org/abs/2012.03321}
 }
 </pre></td>
 </tr>
-<tr id="Lin2019" data-reftype="Article" class="entry">
-	<td>Lin X, Sun D, Lin T-Y, Eustice RM and Ghaffari M (2019), <i>"A Keyframe-based Continuous Visual SLAM for RGB-D Cameras via Nonparametric Joint Geometric and Appearance Representation"</i>, arXiv preprint arXiv:1912.01064. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Lin2019','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Lin2019','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1912.01064.pdf" target="_blank">URL</a>]</p>
-	</td>
-</tr>
-<tr id="abs_Lin2019" class="abstract noshow">
-	<td><b>Abstract</b>: This paper reports on a robust RGB-D SLAM system that performs well in scarcely textured and structured environments. We present a novel keyframe-based continuous visual odometry that builds on the recently developed continuous sensor registration framework. A joint geometric and appearance representation is the result of transforming the RGB-D images into functions that live in a Reproducing Kernel Hilbert Space (RKHS). We solve both registration and keyframe selection problems via the inner product structure available in the RKHS. We also extend the proposed keyframe-based odometry method to a SLAM system using indirect ORB loop-closure constraints. The experimental evaluations using publicly available RGB-D benchmarks show that the developed keyframe selection technique using continuous visual odometry outperforms its robust dense (and direct) visual odometry equivalent. In addition, the developed SLAM system has better generalization across different training and validation sequences; it is robust to the lack of texture and structure in the scene; and shows comparable performance with the state-of-the-art SLAM systems.</td>
-</tr>
-<tr id="bib_Lin2019" class="bibtex noshow">
-<td><b>BibTeX</b>:
-<pre>
-@article{Lin2019,
-  author = {Lin, Xi and Sun, Dingyi and Lin, Tzu-Yuan and Eustice, Ryan M. and Ghaffari, Maani},
-  title = {A Keyframe-based Continuous Visual SLAM for RGB-D Cameras via Nonparametric Joint Geometric and Appearance Representation},
-  journal = {arXiv preprint arXiv:1912.01064},
-  year = {2019},
-  url = {https://arxiv.org/pdf/1912.01064.pdf}
-}
-</pre></td>
-</tr>
-<tr id="Lin2019a" data-reftype="Article" class="entry">
+<tr id="Lin2019Articlea" class="entry">
 	<td>Lin T-Y, Clark W, Eustice RM, Grizzle JW, Bloch A and Ghaffari M (2019), <i>"Adaptive Continuous Visual Odometry from RGB-D Images"</i>, arXiv preprint arXiv:1910.00713. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Lin2019a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Lin2019a','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1910.00713.pdf" target="_blank">URL</a>]</p>
+	<p class="infolinks">[<a href="javascript:toggleInfo('Lin2019Articlea','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Lin2019Articlea','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1910.00713.pdf" target="_blank">URL</a>]</p>
 	</td>
 </tr>
-<tr id="abs_Lin2019a" class="abstract noshow">
+<tr id="abs_Lin2019Articlea" class="abstract noshow">
 	<td><b>Abstract</b>: In this paper, we extend the recently developed continuous visual odometry framework for RGB-D cameras to an adaptive framework via online hyperparameter learning. We focus on the case of isotropic kernels with a scalar as the length-scale. In practice and as expected, the length-scale has remarkable impacts on the performance of the original framework. Previously it was handled using a fixed set of conditions within the solver to reduce the length-scale as the algorithm reaches a local minimum. We automate this process by a greedy gradient descent step at each iteration to find the next-best length-scale. Furthermore, to handle failure cases in the gradient descent step where the gradient is not well-behaved, such as the absence of structure or texture in the scene, we use a search interval for the length-scale and guide it gradually toward the smaller values. This latter strategy reverts the adaptive framework to the original setup. The experimental evaluations using publicly available RGB-D benchmarks show the proposed adaptive continuous visual odometry outperforms the original framework and the current state-of-the-art. We also make the software for the developed algorithm publicly available.</td>
 </tr>
-<tr id="bib_Lin2019a" class="bibtex noshow">
+<tr id="bib_Lin2019Articlea" class="bibtex noshow">
 <td><b>BibTeX</b>:
 <pre>
-@article{Lin2019a,
+@article{Lin2019Articlea,
   author = {Lin, Tzu-Yuan and Clark, William and Eustice, Ryan M and Grizzle, Jessy W and Bloch, Anthony and Ghaffari, Maani},
   title = {Adaptive Continuous Visual Odometry from RGB-D Images},
   journal = {arXiv preprint arXiv:1910.00713},
@@ -486,38 +535,38 @@ p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
 }
 </pre></td>
 </tr>
-<tr id="Huang2019" data-reftype="Article" class="entry">
-	<td>Huang J-K, Ghaffari M, Hartley R, Gan L, Eustice RM and Grizzle JW (2019), <i>"LiDARTag: A Real-Time Fiducial Tag using Point Clouds"</i>, arXiv preprint arXiv:1908.10349. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Huang2019','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Huang2019','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1908.10349.pdf" target="_blank">URL</a>]</p>
+<tr id="Lin2019Article" class="entry">
+	<td>Lin X, Sun D, Lin T-Y, Eustice RM and Ghaffari M (2019), <i>"A Keyframe-based Continuous Visual SLAM for RGB-D Cameras via Nonparametric Joint Geometric and Appearance Representation"</i>, arXiv preprint arXiv:1912.01064. 
+	<p class="infolinks">[<a href="javascript:toggleInfo('Lin2019Article','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Lin2019Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1912.01064.pdf" target="_blank">URL</a>]</p>
 	</td>
 </tr>
-<tr id="abs_Huang2019" class="abstract noshow">
-	<td><b>Abstract</b>: Image-based fiducial markers are widely used in robotics and computer vision problems such as object tracking in cluttered or textureless environments, camera (and multi-sensor) calibration tasks, or vision-based simultaneous localization and mapping (SLAM). The state-of-the-art fiducial marker detection algorithms rely on consistency of the ambient lighting. This paper introduces LiDARTag, a novel fiducial tag design and detection algorithm suitable for light detection and ranging (LiDAR) point clouds. The proposed tag runs in real-time and can process data faster than the currently available LiDAR sensors frequencies. Due to the nature of the LiDAR's sensor, rapidly changing ambient lighting will not affect detection of a LiDARTag; hence, the proposed fiducial marker can operate in a completely dark environment. In addition, the LiDARTag nicely complements available visual fiducial markers as the tag design is compatible with available techniques, such as AprilTags, allowing for efficient multi-sensor fusion and calibration tasks. The experimental results, verified by a motion capture system, confirm the proposed technique can reliably provide a tag's pose and its unique ID code.</td>
+<tr id="abs_Lin2019Article" class="abstract noshow">
+	<td><b>Abstract</b>: This paper reports on a robust RGB-D SLAM system that performs well in scarcely textured and structured environments. We present a novel keyframe-based continuous visual odometry that builds on the recently developed continuous sensor registration framework. A joint geometric and appearance representation is the result of transforming the RGB-D images into functions that live in a Reproducing Kernel Hilbert Space (RKHS). We solve both registration and keyframe selection problems via the inner product structure available in the RKHS. We also extend the proposed keyframe-based odometry method to a SLAM system using indirect ORB loop-closure constraints. The experimental evaluations using publicly available RGB-D benchmarks show that the developed keyframe selection technique using continuous visual odometry outperforms its robust dense (and direct) visual odometry equivalent. In addition, the developed SLAM system has better generalization across different training and validation sequences; it is robust to the lack of texture and structure in the scene; and shows comparable performance with the state-of-the-art SLAM systems.</td>
 </tr>
-<tr id="bib_Huang2019" class="bibtex noshow">
+<tr id="bib_Lin2019Article" class="bibtex noshow">
 <td><b>BibTeX</b>:
 <pre>
-@article{Huang2019,
-  author = {Huang, Jiunn-Kai and Ghaffari, Maani and Hartley, Ross and Gan, Lu and Eustice, Ryan M. and Grizzle, Jessy W.},
-  title = {LiDARTag: A Real-Time Fiducial Tag using Point Clouds},
-  journal = {arXiv preprint arXiv:1908.10349},
+@article{Lin2019Article,
+  author = {Lin, Xi and Sun, Dingyi and Lin, Tzu-Yuan and Eustice, Ryan M. and Ghaffari, Maani},
+  title = {A Keyframe-based Continuous Visual SLAM for RGB-D Cameras via Nonparametric Joint Geometric and Appearance Representation},
+  journal = {arXiv preprint arXiv:1912.01064},
   year = {2019},
-  url = {https://arxiv.org/pdf/1908.10349.pdf}
+  url = {https://arxiv.org/pdf/1912.01064.pdf}
 }
 </pre></td>
 </tr>
-<tr id="Gan2017" data-reftype="Article" class="entry">
+<tr id="Gan2017Article" class="entry">
 	<td>Gan L, Ghaffari Jadidi M, Parkison SA and Eustice RM (2017), <i>"Sparse Bayesian Inference for Dense Semantic Mapping"</i>, arXiv preprint arXiv:1709.07973. 
-  <p class="infolinks">[<a href="javascript:toggleInfo('Gan2017','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Gan2017','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1709.07973" target="_blank">URL</a>]</p>
+	<p class="infolinks">[<a href="javascript:toggleInfo('Gan2017Article','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Gan2017Article','bibtex')">BibTeX</a>] [<a href="https://arxiv.org/pdf/1709.07973" target="_blank">URL</a>]</p>
 	</td>
 </tr>
-<tr id="abs_Gan2017" class="abstract noshow">
+<tr id="abs_Gan2017Article" class="abstract noshow">
 	<td><b>Abstract</b>: Despite impressive advances in simultaneous localization and mapping, dense robotic mapping remains challenging due to its inherent nature of being a high-dimensional inference problem. In this paper, we propose a dense semantic robotic mapping technique that exploits sparse Bayesian models, in particular, the relevance vector machine, for high-dimensional sequential inference. The technique is based on the principle of automatic relevance determination and produces sparse models that use a small subset of the original dense training set as the dominant basis. The resulting map posterior is continuous, and queries can be made efficiently at any resolution. Moreover, the technique has probabilistic outputs per semantic class through Bayesian inference. We evaluate the proposed relevance vector semantic map using publicly available benchmark datasets, NYU Depth V2 and KITTI; and the results show promising improvements over the state-of-the-art techniques.</td>
 </tr>
-<tr id="bib_Gan2017" class="bibtex noshow">
+<tr id="bib_Gan2017Article" class="bibtex noshow">
 <td><b>BibTeX</b>:
 <pre>
-@article{Gan2017,
+@article{Gan2017Article,
   author = {Gan, Lu and Ghaffari Jadidi, Maani and Parkison, Steven A. and Eustice, Ryan M.},
   title = {Sparse Bayesian Inference for Dense Semantic Mapping},
   journal = {arXiv preprint arXiv:1709.07973},

@@ -1,5 +1,3 @@
-% Encoding: UTF-8
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @STRING{C-AAAI = {Proceedings of the {AAAI} National Conference on Artificial Intelligence}}
 @STRING{C-ACC = {Proceedings of the American Control Conference}}
@@ -436,11 +434,12 @@
 @STRING{NOTE-CONDITIONAL = {{{Conditionally Accepted}}}}
 @STRING{NOTE-PRESS = {{{In Press}}}}
 @STRING{NOTE-SUBMITTED = {{{Submitted, Under Review}}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % journals
 
-@Article{Hartley2020,
+@Article{Hartley2020Article,
   author   = {Ross Hartley and Maani Ghaffari and Ryan M. Eustice and Jessy W. Grizzle},
   journal  = J-IJRR,
   title    = {Contact-Aided Invariant Extended {Kalman} Filtering for Robot State Estimation},
@@ -471,53 +470,26 @@
 	provides a practical use case. Overall, the developed contact-aided InEKF provides
 	better performance in comparison with the quaternion-based EKF as a result of exploiting
 	symmetries present in system.},
+  doi      = {10.1177/0278364919894385},
   groups   = {CURLY},
   url      = {https://arxiv.org/pdf/1904.09251.pdf},
 }
 
-@Article{GhaffariJadidi2019,
+@Article{GhaffariJadidi2019Article,
   author    = {Ghaffari Jadidi, Maani and Valls Miro, Jaime and Dissanayake, Gamini},
-  title     = {Sampling-based incremental information gathering with applications to robotic exploration and environmental monitoring},
   journal   = J-IJRR,
+  title     = {Sampling-based incremental information gathering with applications to robotic exploration and environmental monitoring},
   year      = {2019},
-  volume    = {38},
   number    = {6},
   pages     = {658--685},
+  volume    = {38},
+  abstract  = {We propose a sampling-based motion-planning algorithm equipped with an information-theoretic convergence criterion for incremental informative motion planning. The proposed approach allows dense map representations and incorporates the full state uncertainty into the planning process. The problem is formulated as a constrained maximization problem. Our approach is built on rapidly exploring information-gathering algorithms and benefits from the advantages of sampling-based optimal motion-planning algorithms. We propose two information functions and their variants for fast and online computations. We prove an information-theoretic convergence for an entire exploration and information-gathering mission based on the least upper bound of the average map entropy. A natural automatic stopping criterion for information-driven motion control results from the convergence analysis. We demonstrate the performance of the proposed algorithms using three scenarios: comparison of the proposed information functions and sensor configuration selection, robotic exploration in unknown environments, and a wireless signal strength monitoring task in a lake from a publicly available dataset collected using an autonomous surface vehicle.},
   doi       = {https://doi.org/10.1177%2F0278364919844575},
   publisher = {SAGE Publications},
-  abstract  = {We propose a sampling-based motion-planning algorithm equipped with an information-theoretic convergence criterion for incremental informative motion planning. The proposed approach allows dense map representations and incorporates the full state uncertainty into the planning process. The problem is formulated as a constrained maximization problem. Our approach is built on rapidly exploring information-gathering algorithms and benefits from the advantages of sampling-based optimal motion-planning algorithms. We propose two information functions and their variants for fast and online computations. We prove an information-theoretic convergence for an entire exploration and information-gathering mission based on the least upper bound of the average map entropy. A natural automatic stopping criterion for information-driven motion control results from the convergence analysis. We demonstrate the performance of the proposed algorithms using three scenarios: comparison of the proposed information functions and sensor configuration selection, robotic exploration in unknown environments, and a wireless signal strength monitoring task in a lake from a publicly available dataset collected using an autonomous surface vehicle.},
   url       = {https://arxiv.org/pdf/1607.01883.pdf},
 }
 
-@Article{Mangelson2020,
-  author   = {Joshua G. Mangelson and Maani Ghaffari and Ram Vasudevan and Ryan M. Eustice},
-  journal  = IEEE_J_RO,
-  title    = {Characterizing the Uncertainty of Jointly Distributed Poses in the {Lie} Algebra},
-  year     = {2020},
-  note     = {{In Press}},
-  number   = {x},
-  pages    = {1--17},
-  volume   = {x},
-  abstract = {An accurate characterization of pose uncertainty is essential for safe
-	autonomous navigation. Early pose uncertainty characterization methods proposed
-	by Smith, Self, and Cheeseman (SCC), used coordinate-based first-order methods
-	to propagate uncertainty through non-linear functions such as pose composition
-	(head-to-tail), pose inversion, and relative pose extraction (tail-to-tail).
-	Characterizing uncertainty in the Lie Algebra of the special Euclidean group
-	results in better uncertainty estimates. However, existing approaches assume
-	that individual poses are independent. Since factors in a pose graph induce
-	correlation, this independence assumption is usually not reflected in reality.
-	In addition, prior work has focused primarily on the pose composition operation.
-	This paper develops a framework for modeling the uncertainty of jointly distributed
-	poses and describes how to perform the equivalent of the SSC pose operations while
-	characterizing uncertainty in the Lie Algebra. Evaluation on simulated and open-source
-	datasets shows that the proposed methods result in more accurate uncertainty estimates.
-	An accompanying C++ library implementation is also released.},
-  groups   = {CURLY},
-  url      = {https://arxiv.org/pdf/1906.07795.pdf},
-}
-
-@Article{Gan2020,
+@Article{Gan2020Article,
   author   = {Lu Gan and Ray Zhang and Jessy W. Grizzle and Ryan M. Eustice and Maani Ghaffari},
   journal  = J-RAL,
   title    = {{Bayesian} Spatial Kernel Smoothing for Scalable Dense Semantic Mapping},
@@ -538,11 +510,12 @@
 	that the proposed method consistently outperforms current baselines. We also present a
 	qualitative evaluation using data collected with a bipedal robot platform on the University
 	of Michigan - North Campus.},
+  doi      = {10.1109/LRA.2020.2965390},
   groups   = {CURLY},
   url      = {https://arxiv.org/pdf/1909.04631.pdf},
 }
 
-@Article{Parkison2019,
+@Article{Parkison2019Article,
   author   = {Steven A. Parkison and Maani Ghaffari and Lu Gan and Ray Zhang and Arash K. Ushani and Ryan M. Eustice},
   journal  = J-RAL,
   title    = {Boosting Shape Registration Algorithms via Reproducing Kernel {Hilbert} Space Regularizers},
@@ -564,11 +537,12 @@
 	Furthermore, the proposed RKHS regularizer is agnostic to the choice of the registration
 	cost function which is desirable. The evaluations on experimental data confirm the 
 	effectiveness of the proposed regularizer using RGB-D and LIDAR sensors.},
+  doi      = {10.1109/LRA.2019.2932865},
   groups   = {CURLY},
   url      = {https://aushani.com/pdfs/sparkison-2019a.pdf},
 }
 
-@Article{Hashemi2011,
+@Article{Hashemi2011Article,
   author    = {Hashemi, Ehsan and Ghaffari Jadidi, Maani and Ghaffari Jadidi, Navid},
   journal   = J-RAS,
   title     = {Model-based PI--fuzzy control of four-wheeled omni-directional mobile robots},
@@ -581,32 +555,33 @@
   publisher = {North-Holland},
 }
 
-@Article{Valiente2015,
+@Article{Valiente2015Article,
   author    = {Valiente, David and Ghaffari Jadidi, Maani and Valls Miro, Jaime and Gil, Arturo and Reinoso, Oscar},
-  title     = {Information-based view initialization in visual SLAM with a single omnidirectional camera},
   journal   = J-RAS,
+  title     = {Information-based view initialization in visual SLAM with a single omnidirectional camera},
   year      = {2015},
-  volume    = {72},
   pages     = {93--104},
+  volume    = {72},
+  abstract  = {This paper presents a novel mechanism to initiate new views within the map building process for an EKF-based visual SLAM (Simultaneous Localization and Mapping) approach using omnidirectional images. In presence of non-linearities, the EKF is very likely to compromise the final estimation. Particularly, the omnidirectional observation model induces non-linear errors, thus it becomes a potential source of uncertainty. To deal with this issue we propose a novel mechanism for view initialization which accounts for information gain and losses more efficiently. The main outcome of this contribution is the reduction of the map uncertainty and thus the higher consistency of the final estimation. Its basis relies on a Gaussian Process to infer an information distribution model from sensor data. This model represents feature points existence probabilities and their information content analysis leads to the proposed view initialization scheme. To demonstrate the suitability and effectiveness of the approach we present a series of real data experiments conducted with a robot equipped with a camera sensor and map model solely based on omnidirectional views. The results reveal a beneficial reduction on the uncertainty but also on the error in the pose and the map estimate.},
   doi       = {https://doi.org/10.1016/j.robot.2015.05.005},
   publisher = {North-Holland},
-  abstract  = {This paper presents a novel mechanism to initiate new views within the map building process for an EKF-based visual SLAM (Simultaneous Localization and Mapping) approach using omnidirectional images. In presence of non-linearities, the EKF is very likely to compromise the final estimation. Particularly, the omnidirectional observation model induces non-linear errors, thus it becomes a potential source of uncertainty. To deal with this issue we propose a novel mechanism for view initialization which accounts for information gain and losses more efficiently. The main outcome of this contribution is the reduction of the map uncertainty and thus the higher consistency of the final estimation. Its basis relies on a Gaussian Process to infer an information distribution model from sensor data. This model represents feature points existence probabilities and their information content analysis leads to the proposed view initialization scheme. To demonstrate the suitability and effectiveness of the approach we present a series of real data experiments conducted with a robot equipped with a camera sensor and map model solely based on omnidirectional views. The results reveal a beneficial reduction on the uncertainty but also on the error in the pose and the map estimate.}
 }
 
-@Article{GhaffariJadidi2018a,
+@Article{GhaffariJadidi2018Article,
   author    = {Ghaffari Jadidi, Maani and Valls Miro, Jaime and Dissanayake, Gamini},
-  title     = {Gaussian processes autonomous mapping and exploration for range-sensing mobile robots},
   journal   = J-AR,
+  title     = {Gaussian processes autonomous mapping and exploration for range-sensing mobile robots},
   year      = {2018},
-  volume    = {42},
   number    = {2},
   pages     = {273--290},
-  publisher = {Springer US},
+  volume    = {42},
   abstract  = {Most of the existing robotic exploration schemes use occupancy grid representations and geometric targets known as frontiers. The occupancy grid representation relies on the assumption of independence between grid cells and ignores structural correlations present in the environment. We develop a Gaussian processes (GPs) occupancy mapping technique that is computationally tractable for online map building due to its incremental formulation and provides a continuous model of uncertainty over the map spatial coordinates. The standard way to represent geometric frontiers extracted from occupancy maps is to assign binary values to each grid cell. We extend this notion to novel probabilistic frontier maps computed efficiently using the gradient of the GP occupancy map. We also propose a mutual information-based greedy exploration technique built on that representation that takes into account all possible future observations. A major advantage of high-dimensional map inference is the fact that such techniques require fewer observations, leading to a faster map entropy reduction during exploration for map building scenarios. Evaluations using the publicly available datasets show the effectiveness of the proposed framework for robotic mapping and exploration tasks.},
+  doi       = {10.1007/s10514-017-9668-3},
+  publisher = {Springer US},
   url       = {https://arxiv.org/pdf/1605.00335.pdf},
 }
 
-@Article{GhaffariJadidi2017,
+@Article{GhaffariJadidi2017Article,
   author    = {Ghaffari Jadidi, Maani and Valls Miro, Jaime and Dissanayake, Gamini},
   journal   = J-RAL,
   title     = {Warped Gaussian Processes Occupancy Mapping With Uncertain Inputs},
@@ -615,8 +590,179 @@
   pages     = {680--687},
   volume    = {2},
   abstract  = {In this paper, we study extensions to the Gaussian processes (GPs) continuous occupancy mapping problem. There are two classes of occupancy mapping problems that we particularly investigate. The first problem is related to mapping under pose uncertainty and how to propagate pose estimation uncertainty into the map inference. We develop expected kernel and expected submap notions to deal with uncertain inputs. In the second problem, we account for the complication of the robot's perception noise using warped Gaussian processes (WGPs). This approach allows for non-Gaussian noise in the observation space and captures the possible nonlinearity in that space better than standard GPs. The developed techniques can be applied separately or concurrently to a standard GP occupancy mapping problem. According to our experimental results, although taking into account pose uncertainty leads, as expected, to more uncertain maps, by modeling the nonlinearities present in the observation space WGPs improve the map quality.},
+  doi       = {10.1109/LRA.2017.2651154},
   publisher = {IEEE},
   url       = {https://arxiv.org/pdf/1701.00925},
+}
+
+@Article{Mangelson2020Article,
+  author    = {Joshua G. Mangelson and Maani Ghaffari and Ram Vasudevan and Ryan M. Eustice},
+  journal   = {IEEE Transactions on Robotics},
+  title     = {Characterizing the Uncertainty of Jointly Distributed Poses in the Lie Algebra},
+  year      = {2020},
+  issn      = {1941-0468},
+  number    = {5},
+  pages     = {1371--1388},
+  volume    = {36},
+  abstract  = {An accurate characterization of pose uncertainty is essential for safe autonomous navigation. Early pose uncertainty characterization methods proposed by Smith, Self, and Cheeseman (SCC) used coordinate-based first-order methods to propagate uncertainty through nonlinear functions such as pose composition (head-to-tail), pose inversion, and relative pose extraction (tail-to-tail). Characterizing uncertainty in the Lie algebra of the special Euclidean group results in better uncertainty estimates. However, existing Lie-group-based uncertainty propagation techniques assume that individual poses are independent. After solving a pose graph, however, the entire trajectory is jointly distributed as factors induce correlation. Hence, the independence assumption does not capture reality. In addition, prior work has focused primarily on the pose composition operation. This article develops a framework for modeling the uncertainty of jointly distributed poses and describes how to perform the equivalent of the SSC pose operations while characterizing uncertainty in the Lie algebra. Evaluation on simulated and open-source datasets shows that the proposed methods result in more accurate uncertainty estimates and thus more accurate filtering of potential loop closures. An accompanying C++ library implementation is also released.},
+  date      = {Oct. 2020},
+  doi       = {10.1109/TRO.2020.2994457},
+  file      = {:- Characterizing the Uncertainty of Jointly Distributed Poses in the Lie Algebra.html:URL},
+  issue     = {5},
+  keywords  = {Uncertainty, Algebra, Simultaneous localization and mapping, Robot kinematics, Maximum likelihood estimation, Correlation, Lie algebra, Lie group, matrix groups, mobile robotics, rigid body transformation, simultaneous localization and mapping (SLAM), state estimation, uncertainty propagation},
+  publisher = {IEEE},
+  url       = {https://arxiv.org/pdf/1906.07795.pdf},
+}
+
+@Article{Huang2021Article,
+  author    = {Jiunn-Kai Huang and Shoutian Wang and Maani Ghaffari and Jessy W. Grizzle},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {LiDARTag: A Real-Time Fiducial Tag System for Point Clouds},
+  year      = {2021},
+  issn      = {2377-3774},
+  pages     = {4875--4882},
+  volume    = {6},
+  abstract  = {Image-based fiducial markers are useful in problems such as object tracking in cluttered or textureless environments, camera (and multi-sensor) calibration tasks, and vision-based simultaneous localization and mapping (SLAM). The state-of-the-art fiducial marker detection algorithms rely on the consistency of the ambient lighting. This article introduces LiDARTag, a novel fiducial tag design and detection algorithm suitable for light detection and ranging (LiDAR) point clouds. The proposed method runs in real-time and can process data at 100 Hz, which is faster than the currently available LiDAR sensor frequencies. Because of the LiDAR sensors' nature, rapidly changing ambient lighting will not affect the detection of a LiDARTag; hence, the proposed fiducial marker can operate in a completely dark environment. In addition, the LiDARTag nicely complements and is compatible with existing visual fiducial markers, such as AprilTags, allowing for efficient multi-sensor fusion and calibration tasks. We further propose a concept of minimizing a fitting error between a point cloud and the marker's template to estimate the marker's pose. The proposed method achieves millimeter error in translation and a few degrees in rotation. Due to LiDAR returns' sparsity, the point cloud is lifted to a continuous function in a reproducing kernel Hilbert space where the inner product can be used to determine a marker's ID. The experimental results, verified by a motion capture system, confirm that the proposed method can reliably provide a tag's pose and unique ID code. The rejection of false positives is validated on the Google Cartographer indoor dataset and the Honda H3D outdoor dataset. All implementations are coded in C++ and are available at https://github.com/UMich-BipedLab/LiDARTag.},
+  date      = {July 2021},
+  doi       = {10.1109/LRA.2021.3070302},
+  file      = {:- LiDARTag_ a Real Time Fiducial Tag System for Point Clouds.html:URL},
+  issue     = {3},
+  keywords  = {Laser radar, Three-dimensional displays, Cameras, Payloads, Lighting, Detectors, Visualization, Range sensing, visual tracking, object detection, segmentation and categorization, computer vision for automation},
+  publisher = {IEEE},
+}
+
+@Article{Song2022Article,
+  author    = {Jingwei Song and Mitesh Patel and Maani Ghaffari},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {Fusing Convolutional Neural Network and Geometric Constraint for Image-Based Indoor Localization},
+  year      = {2022},
+  issn      = {2377-3774},
+  number    = {2},
+  pages     = {1674--1681},
+  volume    = {7},
+  abstract  = {This letter proposes a new image-based localization framework that explicitly localizes the camera/robot by fusing Convolutional Neural Network (CNN) and sequential images&amp;#x2019; geometric constraints. The camera is localized using a single or few observed images and training images with 6-degree-of-freedom pose labels. A Siamese network structure is adopted to train an image descriptor network, and the visually similar candidate image in the training set is retrieved to localize the testing image geometrically. Meanwhile, a probabilistic motion model predicts the pose based on a constant velocity assumption. The two estimated poses are finally fused using their uncertainties to yield an accurate pose prediction. This method leverages the geometric uncertainty and is applicable in indoor scenarios predominated by diffuse illumination. Experiments on simulation and real data sets demonstrate the efficiency of our proposed method. The results further show that combining the CNN-based framework with geometric constraint achieves better accuracy when compared with CNN-only methods, especially when the training data size is small.},
+  date      = {April 2022},
+  doi       = {10.1109/LRA.2022.3140832},
+  file      = {:- Fusing Convolutional Neural Network and Geometric Constraint for Image Based Indoor Localization.html:URL},
+  issue     = {2},
+  keywords  = {Training, Uncertainty, Location awareness, Testing, Cameras, Simultaneous localization and mapping, Predictive models, Vision-based navigation, localization, probability and statistical methods},
+  publisher = {IEEE},
+  url       = {https://arxiv.org/pdf/2201.01408.pdf},
+}
+
+@Article{Song2022Articlea,
+  author    = {Jingwei Song and Mitesh Patel and Ashkan Jasour and Maani Ghaffari},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {A Closed-Form Uncertainty Propagation in Non-Rigid Structure From Motion},
+  year      = {2022},
+  issn      = {2377-3774},
+  pages     = {6479--6486},
+  volume    = {7},
+  abstract  = {Semi-Definite Programming (SDP) with low-rank prior has been widely applied in Non-Rigid Structure from Motion (NRSfM). A low-rank constraint avoids the inherent ambiguity of the basis number selection in conventional base-shape or base-trajectory methods. Despite SDP-based NRSfM&amp;#x2019;s efficiency, it remains unclear how to propagate the noisy tracked feature points&amp;#x2019; uncertainty to the 3D recovered shape in SDP-based NRSfM formulation. This paper presents a closed-form statistical inference for the element-wise uncertainty propagation of the estimated deforming 3D shape points in the exact low-rank SDP-based NRSfM. Then, we extend the exact low-rank uncertainty propagation to the approximate low-rank scenario with an optimal numerical rank selection method. The proposed method provides an independent module to the SDP-based method and only requires the statistical information of the input 2D trackings. Extensive experiments show that the major uncertainty in the recovered 3D points follows normal distribution, the proposed method quantifies the uncertainty accurately, and it has desirable effects on the routinely SDP low-rank based NRSfM solver.},
+  date      = {July 2022},
+  doi       = {10.1109/LRA.2022.3173733},
+  file      = {:Song2022a - A Closed Form Uncertainty Propagation in Non Rigid Structure from Motion.html:URL},
+  issue     = {3},
+  keywords  = {Uncertainty, Shape, Estimation, Three-dimensional displays, Cameras, Noise measurement, Simultaneous localization and mapping, NRSfM, SDP, uncertainty quantification},
+  publisher = {IEEE},
+  url       = {https://arxiv.org/pdf/2005.04810.pdf},
+}
+
+@Article{Gan2022Article,
+  author   = {Gan, Lu and Kim, Youngji and Grizzle, Jessy W. and Walls, Jeffrey M. and Kim, Ayoung and Eustice, Ryan M. and Ghaffari, Maani},
+  journal  = {IEEE Transactions on Robotics},
+  title    = {Multitask Learning for Scalable and Dense Multilayer Bayesian Map Inference},
+  year     = {2022},
+  pages    = {1-19},
+  abstract = {In this article, we present a novel and flexible multitask multilayer Bayesian mapping framework with readily extendable attribute layers. The proposed framework goes beyond modern metric-semantic maps to provide even richer environmental information for robots in a single mapping formalism while exploiting intralayer and interlayer correlations. It removes the need for a robot to access and process information from many separate maps when performing a complex task, advancing the way robots interact with their environments. To this end, we design a multitask deep neural network with attention mechanisms as our front-end to provide heterogeneous observations for multiple map layers simultaneously. Our back-end runs a scalable closed-form Bayesian inference with only logarithmic time complexity. We apply the framework to build a dense robotic map, including metric-semantic occupancy and traversability layers. Traversability ground truth labels are automatically generated from exteroceptive sensory data in a self-supervised manner. We present extensive experimental results on publicly available datasets and data collected by a three-dimensional bipedal robot platform and show reliable mapping performance in different environments. Finally, we also discuss how the current framework can be extended to incorporate more information, such as friction, signal strength, temperature, and physical quantity concentration using Gaussian map layers. The software for reproducing the presented results or running on customized data is made publicly available.},
+  doi      = {10.1109/TRO.2022.3197106},
+  url      = {https://arxiv.org/abs/2106.14986},
+}
+
+@Article{Fu2021Article,
+  author   = {Fu, Bo and Kathuria, Tribhi and Rizzo, Denise and Castanier, Matthew and Yang, X Jessie and Ghaffari, Maani and Barton, Kira},
+  journal  = {Journal of Autonomous Vehicles and Systems},
+  title    = {Simultaneous Human-Robot Matching and Routing for Multi-Robot Tour Guiding Under Time Uncertainty},
+  year     = {2021},
+  issn     = {2690-702X},
+  month    = feb,
+  note     = {041005},
+  number   = {4},
+  volume   = {1},
+  abstract = {This work presents a framework for multi-robot tour guidance in a partially known environment with uncertainty, such as a museum. In the proposed centralized multi-robot planner, a simultaneous matching and routing problem (SMRP) is formulated to match the humans with robot guides according to their selected places of interest (POIs) and generate the routes and schedules for the robots according to uncertain spatial and time estimation. A large neighborhood search algorithm is developed to efficiently find sub-optimal low-cost solutions for the SMRP. The scalability and optimality of the multi-robot planner are evaluated computationally under different numbers of humans, robots, and POIs. The largest case tested involves 50 robots, 250 humans, and 50 POIs. Then, a photo-realistic multi-robot simulation platform was developed based on Habitat-AI to verify the tour guiding performance in an uncertain indoor environment. Results demonstrate that the proposed centralized tour planner is scalable, makes a smooth tradeoff in the plans under different environmental constraints, and can lead to robust performance with inaccurate uncertainty estimations (within a certain margin).},
+  doi      = {https://doi.org/10.1115/1.4053428},
+}
+
+@Article{Wilson2022Article,
+  author    = {Wilson, Joey and Song, Jingyu and Fu, Yuewei and Zhang, Arthur and Capodieci, Andrew and Jayakumar, Paramsothy and Barton, Kira and Ghaffari, Maani},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {MotionSC: Data Set and Network for Real-Time Semantic Mapping in Dynamic Environments},
+  year      = {2022},
+  number    = {3},
+  pages     = {8439-8446},
+  volume    = {7},
+  abstract  = {This work addresses a gap in semantic scene completion (SSC) data by creating a novel outdoor data set with accurate and complete dynamic scenes. Our data set is formed from randomly sampled views of the world at each time step, which supervises generalizability to complete scenes without occlusions or traces. We create SSC baselines from state-of-the-art open source networks and construct a benchmark real-time dense local semantic mapping algorithm, MotionSC, by leveraging recent 3D deep learning architectures to enhance SSC with temporal information. Our network shows that the proposed data set can quantify and supervise accurate scene completion in the presence of dynamic objects, which can lead to the development of improved dynamic mapping algorithms.},
+  doi       = {10.1109/LRA.2022.3188435},
+  publisher = {IEEE},
+  url       = {https://arxiv.org/pdf/2203.07060.pdf},
+}
+
+@Article{Gan2022Articlea,
+  author    = {Gan, Lu and Grizzle, Jessy W and Eustice, Ryan M and Ghaffari, Maani},
+  journal   = {IEEE Robotics and Automation Letters},
+  title     = {Energy-Based Legged Robots Terrain Traversability Modeling via Deep Inverse Reinforcement Learning},
+  year      = {2022},
+  number    = {4},
+  pages     = {8807--8814},
+  volume    = {7},
+  abstract  = {This work reports ondeveloping a deep inverse reinforcement learning method for legged robots terrain traversability modeling that incorporates both exteroceptive and proprioceptive sensory data. Existing works use robot-agnostic exteroceptive environmental features or handcrafted kinematic features; instead, we propose to also learn robot-specific inertial features from proprioceptive sensory data for reward approximation in a single deep neural network. Incorporating the inertial features can improve the model fidelity and provide a reward that depends on the robot’s state during deployment. We train the reward network using the Maximum Entropy Deep Inverse Reinforcement Learning (MEDIRL) algorithm and propose simultaneously minimizing a trajectory ranking loss to deal with the suboptimality of legged robot demonstrations. The demonstrated trajectories are ranked by locomotion energy consumption, in order to learn an energy-aware reward function and a more energy-efficient policy than demonstration. We evaluate our method using a dataset collected by an MIT Mini-Cheetah robot and a Mini-Cheetah simulator. The code is publicly available.},
+  doi       = {10.1109/LRA.2022.3188100},
+  publisher = {IEEE},
+  url       = {https://arxiv.org/pdf/2207.03034.pdf},
+}
+
+@Article{Clark2021Article,
+  author   = {William Clark and Maani Ghaffari and Anthony Bloch},
+  journal  = {Journal of Machine Learning Research},
+  title    = {Nonparametric Continuous Sensor Registration},
+  year     = {2021},
+  number   = {271},
+  pages    = {1-50},
+  volume   = {22},
+  abstract = {This paper develops a new mathematical framework that enables nonparametric joint semantic and geometric representation of continuous functions using data. The joint embedding is modeled by representing the processes in a reproducing kernel Hilbert space. The functions can be defined on arbitrary smooth manifolds where the action of a Lie group aligns them. The continuous functions allow the registration to be independent of a specific signal resolution. The framework is fully analytical with a closed-form derivation of the Riemannian gradient and Hessian. We study a more specialized but widely used case where the Lie group acts on functions isometrically. We solve the problem by maximizing the inner product between two functions defined over data, while the continuous action of the rigid body motion Lie group is captured through the integration of the flow in the corresponding Lie algebra. Low-dimensional cases are derived with numerical examples to show the generality of the proposed framework. The high-dimensional derivation for the special Euclidean group acting on the Euclidean space showcases the point cloud registration and bird's-eye view map registration abilities. An implementation of this framework for RGB-D cameras outperforms the state-of-the-art robust visual odometry and performs well in texture and structure-scarce environments.},
+  url      = {http://jmlr.org/papers/v22/20-1468.html},
+}
+
+@Article{Ghaffari2022Article,
+  author   = {Ghaffari, Maani and Zhang, Ray and Zhu, Minghan and Lin, Chien Erh and Lin, Tzu-Yuan and Teng, Sangli and Li, Tingjun and Liu, Tianyi and Song, Jingwei},
+  journal  = {Frontiers in Robotics and AI},
+  title    = {Progress in symmetry preserving robot perception and control through geometry and learning},
+  year     = {2022},
+  issn     = {2296-9144},
+  volume   = {9},
+  abstract = {This article reports on recent progress in robot perception and control methods developed by taking the symmetry of the problem into account. Inspired by existing mathematical tools for studying the symmetry structures of geometric spaces, geometric sensor registration, state estimator, and control methods provide indispensable insights into the problem formulations and generalization of robotics algorithms to challenging unknown environments. When combined with computational methods for learning hard-to-measure quantities, symmetry-preserving methods unleash tremendous performance. The article supports this claim by showcasing experimental results of robot perception, state estimation, and control in real-world scenarios.},
+  doi      = {10.3389/frobt.2022.969380},
+  url      = {https://www.frontiersin.org/articles/10.3389/frobt.2022.969380},
+}
+
+@Article{Unnikrishnan2022Article,
+  author    = {Unnikrishnan, Aishwarya and Wilson, Joey and Gan, Lu and Capodieci, Andrew and Jayakumar, Paramsothy and Barton, Kira and Ghaffari, Maani},
+  journal   = {IEEE Access},
+  title     = {Dynamic Semantic Occupancy Mapping using 3D Scene Flow and Closed-Form Bayesian Inference},
+  year      = {2022},
+  pages     = {1-17},
+  abstract  = {This paper reports on a dynamic semantic mapping framework that incorporates 3D scene
+flow measurements into a closed-form Bayesian inference model. Existence of dynamic objects in the
+environment can cause artifacts and traces in current mapping algorithms, leading to an inconsistent map
+posterior. We leverage state-of-the-art semantic segmentation and 3D flow estimation using deep learning
+to provide measurements for map inference. We develop a Bayesian model that propagates the scene
+with flow and infers a 3D continuous (i.e., can be queried at arbitrary resolution) semantic occupancy
+map outperforming its static counterpart. Extensive experiments using publicly available data sets show
+that the proposed framework improves over its predecessors and input measurements from deep neural
+networks consistently.},
+  doi       = {10.1109/ACCESS.2022.3205329},
+  publisher = {IEEE},
+  url       = {https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9882042},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
